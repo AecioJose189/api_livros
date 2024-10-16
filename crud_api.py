@@ -46,7 +46,14 @@ def incluir_novo_livro(id):
     novo_livro = request.get_json()
     livros.append(novo_livro)
     return jsonify(livros)
+
 #Excluir Livro
+@crud_api.route('/livros/<int:id>', methods=['DELETE'])
+def excluir_livro(id):
+    for indice, livro in enumerate(livros):
+        if livro.get('id') == id:
+            del livros[indice]
+    return jsonify(livros)
 
 crud_api.run(port=5000, host='localhost', debug=True)
 
