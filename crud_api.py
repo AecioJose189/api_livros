@@ -8,12 +8,12 @@ livros = [
         'id': 1,
         'titulo': 'It : A coisa',
         'autor': 'Stephen King'
-    }
+    },
     {
         'id': 2,
         'titulo': 'O colecionador ',
         'autor': 'John Fowles'
-    }
+    },
     {
         'id': 3,
         'titulo': 'Harry Potter',
@@ -22,9 +22,10 @@ livros = [
 ]
 # Consultar todos os livros
 
-@app.route('/')
+@crud_api.route('/')
 def obter_livros():
     return jsonify(livros)
+crud_api.run(port=5000, host='localhost', debug=True)
 # Consultar apenas um livro específico
 # Editar
 # Excluir
