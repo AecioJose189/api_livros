@@ -31,7 +31,7 @@ def obter_livro_por_id(id):
     for livro in livros:
         if livro.get('id') == id:
             return jsonify(livro)
-
+# Editar
 @crud_api.route('/livros/<int:id>', methods=['PUT'])
 def editar_livro_por_id(id):
     livro_alterado = request.get_json()
@@ -40,7 +40,15 @@ def editar_livro_por_id(id):
             livros[indice].update(livro_alterado)
             return jsonify(livros[indice])
 
+#Criar novo livro
+@crud_api.route('/livros', methods=['POST'])
+def incluir_novo_livro(id):
+    novo_livro = request.get_json()
+    livros.append(novo_livro)
+    return jsonify(livros)
+#Excluir Livro
+
 crud_api.run(port=5000, host='localhost', debug=True)
 
-# Editar
-# Excluir
+
+
